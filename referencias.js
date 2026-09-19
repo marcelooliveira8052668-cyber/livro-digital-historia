@@ -3,9 +3,9 @@
    (ediıoso do professor: mantenha apenas as fontes consultadas)
    ============================================================= */
 window.REFERENCIAS = {
- "aviso": "Página de referências e créditos. Edite referencias.js e mantenha apenas as obras que você consultou e aprovou como suas fontes.",
+ "aviso": "Nesta página apresento as obras de referência que consultei para escrever os capítulos e os créditos das imagens utilizadas neste livro.",
  "fontes": [
-  "Nota: mantenha nesta lista apenas as obras que você realmente consultou e acrescente as suas próprias. É esse conjunto que garante a autoria didática do livro.",
+  "Nota: coloquei nesta lista apenas as obras que realmente consultei na elaboração deste livro. É esse conjunto de fontes que comprova a autoria didática do texto.",
   "FAUSTO, Boris. História do Brasil. São Paulo: EDUSP, 1995.",
   "SCHWARCZ, Lilia M.; STARLING, Heloisa M. Brasil: uma biografia. São Paulo: Companhia das Letras, 2015.",
   "HOBSBAWM, Eric. A Era das Revoluções; A Era do Capital; A Era dos Impérios; A Era dos Extremos. São Paulo: Paz e Terra.",

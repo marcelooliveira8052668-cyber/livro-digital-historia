@@ -1,85 +1,77 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta name="description" content="História em Movimento — livro digital interativo em HTML, CSS e JavaScript puro, com 57 capítulos de História Geral e do Brasil."/>
-<title>História em Movimento — Livro Digital Interativo</title>
-<link rel="stylesheet" href="css/style.css"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>História em Foco — Uma viagem pela História</title>
+<link rel="stylesheet" href="estilo.css">
 </head>
-<body>
+<body class="claro">
 
-<!-- ============ CAPA ============ -->
-<section id="capa" class="tela capa-tela" aria-label="Capa do livro">
-  <div class="capa-moldura">
-    <p class="capa-colecao" id="capaColecao">Coleção Didática · Ciências Humanas</p>
-    <div class="capa-ornamento"></div>
-    <h1 class="capa-titulo" id="capaTitulo">História em Movimento</h1>
-    <p class="capa-subtitulo" id="capaSubtitulo">Uma jornada didática pela História Geral e do Brasil</p>
-    <div class="capa-ornamento"></div>
-    <p class="capa-extra" id="capaExtra">57 capítulos · Da Antiguidade Oriental à República Liberal Populista</p>
-    <button class="botao abrir" id="btnAbrir" type="button">Abrir o livro</button>
-    <p class="capa-rodape" id="capaRodape">Do Nilo às trincheiras · Das feiras medievais aos engenhos · Um convite a viajar no tempo</p>
+<header id="barra">
+  <button id="btnMenu" type="button" title="Abrir sumário">&#9776;</button>
+  <div id="edicao">História em Foco</div>
+  <div id="buscaBox">
+    <input id="txtBusca" type="search" placeholder="Buscar capítulo (ex.: 1.28) ou palavra" autocomplete="off" spellcheck="false">
+    <div id="sugestoes"></div>
   </div>
-</section>
+  <button id="btnTema" type="button" title="Alternar dia/noite">&#9790;</button>
+</header>
 
-<!-- ============ LEITOR ============ -->
-<section id="leitor" class="tela leitor-tela oculto" aria-label="Leitor do livro">
+<nav id="painel" aria-label="Sumário do livro">
+  <h4>Sumário</h4>
+  <div id="sumarioDiv"></div>
+</nav>
+<div id="cortina" hidden></div>
 
-  <header class="barra-topo" id="barraTopo">
-    <div class="botoes-topo">
-      <button class="botao-chip" id="btnToc" type="button" title="Sumário">
-        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
-        Sumário
-      </button>
-      <button class="botao-chip" id="btnCapa" type="button" title="Capa">Capa</button>
-    </div>
-    <div class="titulo-topo">
-      <strong id="tituloLivro">História em Movimento</strong>
-      <span id="capituloAtual">—</span>
-    </div>
-    <div class="botoes-topo direita">
-      <button class="botao-chip" id="btnFonteMenos" type="button" title="Diminuir letra">A−</button>
-      <button class="botao-chip" id="btnFonteMais" type="button" title="Aumentar letra">A+</button>
-    </div>
-  </header>
+<button id="setaE" class="seta" type="button" title="Página anterior">&#8249;</button>
+<button id="setaD" class="seta" type="button" title="Próxima página">&#8250;</button>
 
-  <div class="barra-progresso" id="barraProgresso"><div class="progresso-preenchido" id="progressoPreenchido"></div></div>
+<main id="palco">
+  <div id="folhaEsq" class="folha">
+    <div class="pagina" id="pagEsq"></div>
+    <div class="pag-num" id="numEsq"></div>
+  </div>
+  <div id="folhaDir" class="folha">
+    <div class="pagina" id="pagDir"></div>
+    <div class="pag-num" id="numDir"></div>
+  </div>
+  <div id="medidor"></div>
+</main>
 
-  <main class="palco">
-    <button class="seta seta-esquerda" id="btnAnt" type="button" title="Página anterior" tabindex="-1">
-      <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
+<div id="controles">
+  <button id="btnAnt" type="button" title="Anterior">&#171; Anterior</button>
+  <span id="indicador">&ndash;</span>
+  <button id="btnProx" type="button" title="Próxima">Próxima &#187;</button>
+</div>
 
-    <div class="livro">
-      <div class="pagina-envolve" id="paginaEnvolve">
-        <div class="pagina" id="pagina" role="document" aria-live="polite"></div>
-      </div>
-    </div>
+<div id="avisoBusca" hidden></div>
+<div id="tt" hidden></div>
+<div id="dica" hidden></div>
 
-    <button class="seta seta-direita" id="btnProx" type="button" title="Próxima página" tabindex="-1">
-      <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-  </main>
-
-  <footer class="barra-rodape">
-    <div class="contador"><span id="numPagina">—</span> <span class="contador-total">de <span id="totalPaginas">—</span></span></div>
-    <div class="atributo">História em Movimento</div>
-  </footer>
-</section>
-
-<!-- ============ SUMÁRIO (gaveta) ============ -->
-<div class="escurecer" id="escurecer"></div>
-<aside class="gaveta-sumarrio" id="gavetaSumario" aria-label="Sumário do livro">
-  <header class="gaveta-cabecalho">
-    <strong>Sumário</strong>
-    <button class="botao-fechar" id="btnFecharToc" type="button" title="Fechar">×</button>
-  </header>
-  <input class="filtro" id="filtroConteudo" type="search" placeholder="Buscar capítulo…" autocomplete="off"/>
-  <nav class="indice" id="indiceConteudo"></nav>
-</aside>
-
-<script src="js/conteudo.js"></script>
-<script src="js/app.js"></script>
+<script>
+  window.ORDEM = [];
+  window.ADICIONAR = function (partes) {
+    for (var i = 0; i < partes.length; i++) { window.ORDEM.push(partes[i]); }
+  };
+  window.LIVRO = {
+    titulo: "História em Foco",
+    subtitulo: "Uma viagem pela história da humanidade — do Egito ao Brasil de hoje.",
+    autor: "Professor Marcelo Oliveira.",
+    edicao: "1ª edição",
+    citacao: "\u201CNão se conhece a si mesmo quem não conhece a sua história.\u201D",
+    capaTexto: "Capítulos 1.1 a 1.67",
+    sinopse: [
+      "Este livro é uma jornada pelo tempo: começa nas margens do Nilo e do Eufrates, atravessa a Idade Média, acompanha as grandes navegações, as revoluções que redesenharam o mundo e chega ao Brasil de ontem e de hoje.",
+      "Os 67 capítulos foram escritos em linguagem simples e direta, pensados para uma leitura leve, mas profunda. Palavras difíceis aparecem sublinhadas: toque ou passe o mouse sobre elas para ver o significado na hora.",
+      "Abra o capítulo que quiser ou siga a ordem das páginas. Boa viagem!"
+    ]
+  };
+</script>
+<script src="livro1.js"></script>
+<script src="livro2.js"></script>
+<script src="livro3.js"></script>
+<script src="livro4.js"></script>
+<script src="app.js"></script>
 </body>
 </html>

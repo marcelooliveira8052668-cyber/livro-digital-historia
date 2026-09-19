@@ -83,7 +83,7 @@
       '<div class="capa-tit">' + escapar(t) + '</div>' +
       '<div class="capa-linha"></div>' +
       '<div class="capa-autor">' + escapar(LIVRO.autor || "") + '</div>' +
-      '<div class="capa-baixo">' + escapar(LIVRO.capaTexto || "") + '</div>' +
+      '<div class="capa-baixo">' + escapar(LIVRO.editora || "") + " &middot; " + escapar(LIVRO.capaTexto || "") + '</div>' +
       '</div>';
   }
 
@@ -110,7 +110,7 @@
       cap: "sinopse"
     });
     bs.push({
-      html: '<div class="sin-autor">' + escapar(LIVRO.autor || "") + " &mdash; " + escapar(LIVRO.edicao || "") + '</div>',
+      html: '<div class="sin-autor">' + escapar(LIVRO.autor || "") + " &mdash; " + escapar(LIVRO.edicao || "") + " &middot; " + escapar(LIVRO.editora || "") + '</div>',
       cap: "sinopse"
     });
     return bs;

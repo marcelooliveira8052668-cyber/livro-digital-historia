@@ -78,10 +78,9 @@
   function htmlCapa() {
     var t = (LIVRO.titulo || "");
     return '<div class="capaFolha" data-cap="capa">' +
-      '<div class="capa-num">História em Foco</div>' +
+      '<div class="capa-fundo"></div>' +
+      '<div class="capa-num">' + escapar(LIVRO.edicao || "") + '</div>' +
       '<div class="capa-tit">' + escapar(t) + '</div>' +
-      '<div class="capa-linha"></div>' +
-      '<div class="capa-sub">' + escapar(LIVRO.subtitulo || "") + '</div>' +
       '<div class="capa-linha"></div>' +
       '<div class="capa-autor">' + escapar(LIVRO.autor || "") + '</div>' +
       '<div class="capa-baixo">' + escapar(LIVRO.capaTexto || "") + '</div>' +
@@ -98,6 +97,17 @@
     });
     (LIVRO.sinopse || []).forEach(function (p) {
       bs.push({ html: '<p class="sin-p">' + escapar(p) + '</p>', cap: "sinopse" });
+    });
+    bs.push({
+      html: '<div class="sin-foto" data-cap="sinopse"><div class="sin-foto-quadro">' +
+        '<img id="fotoAutor" src="img/professor.jpg" alt="Foto ' + escapar(LIVRO.autor || "do autor") + '" loading="lazy">' +
+        '<div class="sin-foto-vazio">' +
+        '<span class="sf-icone">&#128395;</span>' +
+        '<div><b>Espaço reservado</b></div>' +
+        '<div>para a foto do professor</div>' +
+        '<small>Cole o arquivo em <code>img/professor.jpg</code></small>' +
+        '</div></div></div>',
+      cap: "sinopse"
     });
     bs.push({
       html: '<div class="sin-autor">' + escapar(LIVRO.autor || "") + " &mdash; " + escapar(LIVRO.edicao || "") + '</div>',
@@ -361,6 +371,7 @@
     IND.textContent = (pos + 1) + " / " + paginas.length;
     esconderTT();
     talvezDica();
+    sensorFoto();
     sincronizarVoz();
   }
 
@@ -401,6 +412,18 @@
     DICA.hidden = true;
     DICA.classList.remove("mostrando");
     localStorage.setItem("hf_dica", "1");
+  }
+
+  /* ------------------------- FOTO DO AUTOR (sinopse) ------------------------- */
+  function sensorFoto() {
+    var q = PAG_E.querySelector(".sin-foto-quadro");
+    if (!q && FOLHA_D.style.display !== "none") q = PAG_D.querySelector(".sin-foto-quadro");
+    if (!q || q._fotoFeito) return;
+    q._fotoFeito = 1;
+    var img = q.querySelector("img");
+    if (!img) return;
+    img.addEventListener("load", function () { q.classList.add("tem-foto"); });
+    img.addEventListener("error", function () { q.classList.add("sem-foto"); });
   }
 
   /* ------------------------- AVISO ------------------------- */

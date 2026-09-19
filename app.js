@@ -678,6 +678,8 @@
   var vozAtiva = false;
   var vozUtt = null;
   var vozesLista = [];
+  var vozTimer = null;
+  var vozVigiaVezes = 0;
 
   function carregarVozes() {
     if ("speechSynthesis" in window) vozesLista = window.speechSynthesis.getVoices() || [];
@@ -688,6 +690,37 @@
       if (/^pt/i.test(vozesLista[i].lang || "")) return vozesLista[i];
     }
     return null;
+  }
+  function pararVigia() {
+    if (vozTimer) { clearTimeout(vozTimer); vozTimer = null; }
+    vozVigiaVezes = 0;
+  }
+  function iniciarVigia() {
+    pararVigia();
+    var len = (vozUtt && vozUtt.text ? vozUtt.text.length : 120);
+    var ms = Math.min(Math.max(6000, Math.round(len * 40)), 120000);
+    vozTimer = setTimeout(vigiarVoz, ms);
+  }
+  function vigiarVoz() {
+    vozTimer = null;
+    if (!vozAtiva || !vozUtt) return;
+    var ss = window.speechSynthesis;
+    var falando = false, pausado = false;
+    try { falando = !!ss.speaking; pausado = !!ss.paused; } catch (e) {}
+    if (falando) {
+      vozVigiaVezes++;
+      if (vozVigiaVezes < 4) { iniciarVigia(); return; }
+    } else if (pausado) {
+      try { ss.resume(); } catch (e) {}
+      iniciarVigia();
+      return;
+    } else {
+      vozVigiaVezes = 0;
+    }
+    vozUtt = null;
+    try { ss.cancel(); } catch (e) {}
+    if (!vozAtiva) return;
+    if (pos < paginas.length - 1) { avancar(); lerPaginaAtual(); } else pararVoz();
   }
   function textoDaPagina() {
     var t = (PAG_E.innerText || "").replace(/\s+/g, " ").trim();
@@ -710,6 +743,7 @@
   }
   function pararVoz() {
     vozAtiva = false;
+    pararVigia();
     if (vozUtt) { vozUtt.onend = null; vozUtt.onerror = null; }
     vozUtt = null;
     try { window.speechSynthesis.cancel(); } catch (e) {}
@@ -726,16 +760,23 @@
     if (v) u.voice = v;
     u.rate = 0.95;
     u.onend = function () {
-      if (!vozAtiva) return;
+      pararVigia();
+      if (!vozAtiva || vozUtt !== u) return;
+      vozUtt = null;
       if (pos < paginas.length - 1) avancar();
       else pararVoz();
     };
-    u.onerror = function () { if (vozAtiva) pararVoz(); };
+    u.onerror = function () {
+      pararVigia();
+      if (vozAtiva && vozUtt === u) pararVoz();
+    };
     vozUtt = u;
-    try { window.speechSynthesis.speak(u); } catch (e) { pararVoz(); aviso("Não foi possível iniciar a leitura em voz alta."); }
+    vozVigiaVezes = 0;
+    try { window.speechSynthesis.speak(u); iniciarVigia(); } catch (e) { pararVoz(); aviso("Não foi possível iniciar a leitura em voz alta."); }
   }
   function sincronizarVoz() {
     if (vozAtiva) {
+      pararVigia();
       try { window.speechSynthesis.cancel(); } catch (e) {}
       vozUtt = null;
       lerPaginaAtual();

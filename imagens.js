@@ -354,46 +354,51 @@ window.IMAGENS = {
   "legenda": "Tanques do Exército na Esplanada dos Ministérios durante o golpe civil-militar de 1964."
  },
  "1.71": {
+  "src": "img/cap-1_80.jpg",
+  "alt": "O educador Paulo Freire, símbolo do trabalho de alfabetização de adultos no Brasil, em retrato de 1977.",
+  "legenda": "Paulo Freire, educador símbolo da alfabetização de adultos no Brasil."
+ },
+ "1.72": {
   "src": "img/cap-1_59.jpg",
   "alt": "Comício das Diretas Já no Vale do Anhangabaú, em São Paulo (1984).",
   "legenda": "Comício das Diretas Já no Vale do Anhangabaú, em São Paulo (1984)."
  },
- "1.72": {
+ "1.73": {
   "src": "img/cap-1_60.jpg",
   "alt": "Sessão da Assembleia Nacional Constituinte que promulgou a Constituição de 1988.",
   "legenda": "Sessão da Assembleia Nacional Constituinte que promulgou a Constituição de 1988."
  },
- "1.73": {
+ "1.74": {
   "src": "img/cap-1_61.jpg",
   "alt": "Fernando Collor chega ao Palácio do Planalto com o vice Itamar Franco (posse de 1990).",
   "legenda": "Fernando Collor chega ao Palácio do Planalto com o vice Itamar Franco (posse de 1990)."
  },
- "1.74": {
+ "1.75": {
   "src": "img/cap-1_62.jpg",
   "alt": "Retrato oficial do presidente Fernando Henrique Cardoso (1999-2002).",
   "legenda": "Retrato oficial do presidente Fernando Henrique Cardoso (1999-2002)."
  },
- "1.75": {
+ "1.76": {
   "src": "img/cap-1_63.jpg",
   "alt": "Retrato oficial do presidente Luiz Inácio Lula da Silva (2003).",
   "legenda": "Retrato oficial do presidente Luiz Inácio Lula da Silva (2003)."
  },
- "1.76": {
+ "1.77": {
   "src": "img/cap-1_64.jpg",
   "alt": "Retrato oficial da presidenta Dilma Rousseff (2011).",
   "legenda": "Retrato oficial da presidenta Dilma Rousseff (2011)."
  },
- "1.77": {
+ "1.78": {
   "src": "img/cap-1_65.jpg",
   "alt": "Retrato oficial do presidente Michel Temer (2016-2018).",
   "legenda": "Retrato oficial do presidente Michel Temer (2016-2018)."
  },
- "1.78": {
+ "1.79": {
   "src": "img/cap-1_66.jpg",
   "alt": "O presidente Jair Bolsonaro em fotografia oficial do Palácio do Planalto (2019).",
   "legenda": "O presidente Jair Bolsonaro em fotografia oficial do Palácio do Planalto (2019)."
  },
- "1.79": {
+ "1.80": {
   "src": "img/cap-1_67.jpg",
   "alt": "Retrato oficial do presidente Luiz Inácio Lula da Silva para o mandato 2023-2027.",
   "legenda": "Retrato oficial do presidente Luiz Inácio Lula da Silva para o mandato 2023-2027."

@@ -584,6 +584,16 @@
     else if (!ab) esconderTT();
   });
 
+  /* sumário lateral (painel) */
+  SUMARIO_DIV.addEventListener("click", function (e) {
+    var it = e.target.closest ? e.target.closest(".sumario-item") : null;
+    if (it && it.getAttribute("data-cap")) {
+      fecharPainel();
+      goCap(it.getAttribute("data-cap"));
+      esconderTT();
+    }
+  });
+
   /* swipe */
   var toque = null;
   document.addEventListener("touchstart", function (e) {

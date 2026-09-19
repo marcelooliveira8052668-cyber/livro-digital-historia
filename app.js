@@ -16,6 +16,7 @@
   var MED     = document.getElementById("medidor");
   var BTN_ANT = document.getElementById("btnAnt");
   var BTN_PROX= document.getElementById("btnProx");
+  var BTN_VOZ = document.getElementById("btnVoz");
   var SETA_E  = document.getElementById("setaE");
   var SETA_D  = document.getElementById("setaD");
   var IND     = document.getElementById("indicador");
@@ -345,6 +346,7 @@
     IND.textContent = (pos + 1) + " / " + paginas.length;
     esconderTT();
     talvezDica();
+    sincronizarVoz();
   }
 
   /* ------------------------- POP-UP TT (abbr) ------------------------- */
@@ -593,6 +595,85 @@
       esconderTT();
     }
   });
+
+  /* ------------------------- LEITURA EM VOZ ALTA ------------------------- */
+  var vozAtiva = false;
+  var vozUtt = null;
+  var vozesLista = [];
+
+  function carregarVozes() {
+    if ("speechSynthesis" in window) vozesLista = window.speechSynthesis.getVoices() || [];
+  }
+  function vozPortugues() {
+    carregarVozes();
+    for (var i = 0; i < vozesLista.length; i++) {
+      if (/^pt/i.test(vozesLista[i].lang || "")) return vozesLista[i];
+    }
+    return null;
+  }
+  function textoDaPagina() {
+    var t = (PAG_E.innerText || "").replace(/\s+/g, " ").trim();
+    if (FOLHA_D && FOLHA_D.style.display !== "none") {
+      var d = (FOLHA_D.innerText || "").replace(/\s+/g, " ").trim();
+      if (d) t += " " + d;
+    }
+    return t;
+  }
+  function atualizarBotaoVoz() {
+    if (vozAtiva) {
+      BTN_VOZ.classList.add("ativo");
+      BTN_VOZ.innerHTML = "&#9209;";
+      BTN_VOZ.title = "Parar a leitura em voz alta";
+    } else {
+      BTN_VOZ.classList.remove("ativo");
+      BTN_VOZ.innerHTML = "&#128266;";
+      BTN_VOZ.title = "Ler a página em voz alta";
+    }
+  }
+  function pararVoz() {
+    vozAtiva = false;
+    if (vozUtt) { vozUtt.onend = null; vozUtt.onerror = null; }
+    vozUtt = null;
+    try { window.speechSynthesis.cancel(); } catch (e) {}
+    atualizarBotaoVoz();
+  }
+  function lerPaginaAtual() {
+    if (!("speechSynthesis" in window)) { pararVoz(); aviso("Seu navegador não suporta leitura em voz alta."); return; }
+    var txt = textoDaPagina();
+    if (!txt) { pararVoz(); return; }
+    try { window.speechSynthesis.cancel(); } catch (e) {}
+    var u = new SpeechSynthesisUtterance(txt);
+    u.lang = "pt-BR";
+    var v = vozPortugues();
+    if (v) u.voice = v;
+    u.rate = 0.95;
+    u.onend = function () {
+      if (!vozAtiva) return;
+      if (pos < paginas.length - 1) avancar();
+      else pararVoz();
+    };
+    u.onerror = function () { if (vozAtiva) pararVoz(); };
+    vozUtt = u;
+    try { window.speechSynthesis.speak(u); } catch (e) { pararVoz(); aviso("Não foi possível iniciar a leitura em voz alta."); }
+  }
+  function sincronizarVoz() {
+    if (vozAtiva) {
+      try { window.speechSynthesis.cancel(); } catch (e) {}
+      vozUtt = null;
+      lerPaginaAtual();
+    }
+  }
+  function alternarVoz() {
+    if (vozAtiva) { pararVoz(); return; }
+    vozAtiva = true;
+    atualizarBotaoVoz();
+    lerPaginaAtual();
+  }
+  BTN_VOZ.addEventListener("click", alternarVoz);
+  if ("speechSynthesis" in window) {
+    carregarVozes();
+    window.speechSynthesis.onvoiceschanged = carregarVozes;
+  }
 
   /* swipe */
   var toque = null;

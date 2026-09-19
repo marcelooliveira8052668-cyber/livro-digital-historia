@@ -474,6 +474,18 @@ mark{
   opacity: .45;
   cursor: default;
 }
+#btnVoz{
+  min-width: 44px;
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+  font-size: 15px;
+}
+#btnVoz.ativo{
+  border-color: var(--c-destaque);
+  background: var(--c-destaque);
+  color: var(--c-bar-texto);
+  box-shadow: 0 0 0 3px var(--c-sombra);
+}
 #indicador{
   font-family: var(--fonte-ui);
   font-size: 13px;

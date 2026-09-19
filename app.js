@@ -722,13 +722,33 @@
     if (!vozAtiva) return;
     if (pos < paginas.length - 1) { avancar(); lerPaginaAtual(); } else pararVoz();
   }
-  function textoDaPagina() {
-    var t = (PAG_E.innerText || "").replace(/\s+/g, " ").trim();
-    if (FOLHA_D && FOLHA_D.style.display !== "none") {
-      var d = (FOLHA_D.innerText || "").replace(/\s+/g, " ").trim();
-      if (d) t += " " + d;
+  function textoDeFolha(elm) {
+    if (!elm || elm.style.display === "none") return "";
+    var partes = [];
+    for (var i = 0; i < elm.children.length; i++) {
+      var bloco = elm.children[i];
+      var t = (bloco.innerText || "").trim();
+      if (!t) continue;
+      var linhas = t.split("\n");
+      var frases = [];
+      for (var j = 0; j < linhas.length; j++) {
+        var l = linhas[j].replace(/\s+/g, " ").trim();
+        if (!l) continue;
+        var ultimo = l.charAt(l.length - 1);
+        if (".!?:;…)".indexOf(ultimo) === -1) l += ".";
+        frases.push(l);
+      }
+      if (frases.length) partes.push(frases.join(" "));
     }
-    return t;
+    return partes.join("\n");
+  }
+  function textoDaPagina() {
+    var t = textoDeFolha(PAG_E);
+    if (FOLHA_D && FOLHA_D.style.display !== "none") {
+      var d = textoDeFolha(FOLHA_D);
+      if (d) t = t ? t + "\n" + d : d;
+    }
+    return t.trim();
   }
   function atualizarBotaoVoz() {
     if (vozAtiva) {

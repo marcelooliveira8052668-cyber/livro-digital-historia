@@ -319,8 +319,12 @@
                                                                          "artista":  "\u003cbdi\u003e\u003ca href=\"https://en.wikipedia.org/wiki/en:Santi_di_Tito\" class=\"extiw\" title=\"w:en:Santi di Tito\"\u003e\u003cspan title=\"Italian painter (1536-1603)\"\u003eSanti di Tito\u003c/span\u003e\u003c/a\u003e\u003c/bdi\u003e",
                                                                          "lic":  "Public domain"
                                                                      },
-    "File:Paulo Freire 1977.jpg":  {
-                                       "artista":  "Slobodan Dimitro",
-                                       "lic":  "CC BY-SA 3.0"
-                                   }
+"File:Paulo Freire 1977.jpg":  {
+                                        "artista":  "Slobodan Dimitro",
+                                        "lic":  "CC BY-SA 3.0"
+                                    },
+    "File:Apartheid-signs-trainstation.jpg":  {
+                                                  "artista":  "Ernest Cole",
+                                                  "lic":  "Public domain"
+                                              }
 }

@@ -254,151 +254,156 @@ window.IMAGENS = {
   "legenda": "Mahatma Gandhi com Rajkumari Amrit Kaur, Manu e Abha (década de 1940)."
  },
  "1.51": {
+  "src": "img/cap-1_81.jpg",
+  "alt": "Letreiro de uma estação de trem na África do Sul separando as entradas de \"brancos\" e \"não brancos\" durante o Apartheid, fotografia de Ernest Cole.",
+  "legenda": "No Apartheid, entradas, transportes e espaços públicos eram separados por raça, como mostra este letreiro fotografado por Ernest Cole."
+ },
+ "1.52": {
   "src": "img/cap-1_78.jpg",
   "alt": "O escritor uruguaio Eduardo Galeano, autor de As Veias Abertas da América Latina, em um encontro com leitores.",
   "legenda": "Eduardo Galeano (1940–2015), autor de “As Veias Abertas da América Latina”."
  },
- "1.52": {
+ "1.53": {
   "src": "img/cap-1_43.jpg",
   "alt": "Desembarque de Pedro Álvares Cabral em Porto Seguro (1500), óleo de Oscar Pereira da Silva.",
   "legenda": "Desembarque de Pedro Álvares Cabral em Porto Seguro (1500), óleo de Oscar Pereira da Silva."
  },
- "1.53": {
+ "1.54": {
   "src": "img/cap-1_44.jpg",
   "alt": "Trabalho escravo no engenho de açúcar, aquarela de Jean-Baptiste Debret (c. 1830).",
   "legenda": "Trabalho escravo no engenho de açúcar, aquarela de Jean-Baptiste Debret (c. 1830)."
  },
- "1.54": {
+ "1.55": {
   "src": "img/cap-1_71.jpg",
   "alt": "Retrato do poeta baiano Gregório de Matos, o 'Boca do Inferno' da literatura colonial.",
   "legenda": "Gregório de Matos, o primeiro grande poeta do Brasil."
  },
- "1.55": {
+ "1.56": {
   "src": "img/cap-1_45.jpg",
   "alt": "As capitanias hereditárias do Brasil colonial, mapa de Luís Teixeira (c. 1574).",
   "legenda": "As capitanias hereditárias do Brasil colonial, mapa de Luís Teixeira (c. 1574)."
  },
- "1.56": {
+ "1.57": {
   "src": "img/cap-1_46.jpg",
   "alt": "Os bandeirantes em expedição pelo sertão, óleo de Henrique Bernardelli (1889).",
   "legenda": "Os bandeirantes em expedição pelo sertão, óleo de Henrique Bernardelli (1889)."
  },
- "1.57": {
+ "1.58": {
   "src": "img/cap-1_47.jpg",
   "alt": "Execução de Tiradentes (1792), óleo de Pedro Américo (1893).",
   "legenda": "Execução de Tiradentes (1792), óleo de Pedro Américo (1893)."
  },
- "1.58": {
+ "1.59": {
   "src": "img/cap-1_48.jpg",
   "alt": "Chegada da família real portuguesa ao Rio de Janeiro em 1808.",
   "legenda": "Chegada da família real portuguesa ao Rio de Janeiro em 1808."
  },
- "1.59": {
+ "1.60": {
   "src": "img/cap-1_49.jpg",
   "alt": "O Grito do Ipiranga (1822), óleo de Pedro Américo (1888).",
   "legenda": "O Grito do Ipiranga (1822), óleo de Pedro Américo (1888)."
  },
- "1.60": {
+ "1.61": {
   "src": "img/cap-1_50.jpg",
   "alt": "Retrato de D. Pedro I (1826).",
   "legenda": "Retrato de D. Pedro I (1826)."
  },
- "1.61": {
+ "1.62": {
   "src": "img/cap-1_51.jpg",
   "alt": "O regente Diogo Antônio Feijó, retrato de Sisson (c. 1850).",
   "legenda": "O regente Diogo Antônio Feijó, retrato de Sisson (c. 1850)."
  },
- "1.62": {
+ "1.63": {
   "src": "img/cap-1_52.jpg",
   "alt": "D. Pedro II na abertura da Assembleia Geral, óleo de Pedro Américo.",
   "legenda": "D. Pedro II na abertura da Assembleia Geral, óleo de Pedro Américo."
  },
- "1.63": {
+ "1.64": {
   "src": "img/cap-1_72.jpg",
   "alt": "A Batalha Naval do Riachuelo (1865), pintura do mestre brasileiro Victor Meirelles.",
   "legenda": "A Batalha Naval do Riachuelo, por Victor Meirelles."
  },
- "1.64": {
+ "1.65": {
   "src": "img/cap-1_73.jpg",
   "alt": "Tropa de mulas conduzida por um condutor, cena do Brasil do século XIX, por Jean-Baptiste Debret.",
   "legenda": "Tropa de mulas no Brasil do século XIX, por Debret."
  },
- "1.65": {
+ "1.66": {
   "src": "img/cap-1_53.jpg",
   "alt": "Proclamação da República em 15 de novembro de 1889, óleo de Benedito Calixto (1893).",
   "legenda": "Proclamação da República em 15 de novembro de 1889, óleo de Benedito Calixto (1893)."
  },
- "1.66": {
+ "1.67": {
   "src": "img/cap-1_54.jpg",
   "alt": "Vista geral de fazenda de café no interior de São Paulo (c. 1900).",
   "legenda": "Vista geral de fazenda de café no interior de São Paulo (c. 1900)."
  },
- "1.67": {
+ "1.68": {
   "src": "img/cap-1_55.jpg",
   "alt": "Tropas revolucionárias de 1930 (foto da época).",
   "legenda": "Tropas revolucionárias de 1930 (foto da época)."
  },
- "1.68": {
+ "1.69": {
   "src": "img/cap-1_56.jpg",
   "alt": "Getúlio Vargas, retrato oficial de 1930.",
   "legenda": "Getúlio Vargas, retrato oficial de 1930."
  },
- "1.69": {
+ "1.70": {
   "src": "img/cap-1_57.jpg",
   "alt": "O presidente Juscelino Kubitschek em 1956 (foto).",
   "legenda": "O presidente Juscelino Kubitschek em 1956 (foto)."
  },
- "1.70": {
+ "1.71": {
   "src": "img/cap-1_58.jpg",
   "alt": "Tanques do Exército na Esplanada dos Ministérios durante o golpe civil-militar de 1964.",
   "legenda": "Tanques do Exército na Esplanada dos Ministérios durante o golpe civil-militar de 1964."
  },
- "1.71": {
+ "1.72": {
   "src": "img/cap-1_80.jpg",
   "alt": "O educador Paulo Freire, símbolo do trabalho de alfabetização de adultos no Brasil, em retrato de 1977.",
   "legenda": "Paulo Freire, educador símbolo da alfabetização de adultos no Brasil."
  },
- "1.72": {
+ "1.73": {
   "src": "img/cap-1_59.jpg",
   "alt": "Comício das Diretas Já no Vale do Anhangabaú, em São Paulo (1984).",
   "legenda": "Comício das Diretas Já no Vale do Anhangabaú, em São Paulo (1984)."
  },
- "1.73": {
+ "1.74": {
   "src": "img/cap-1_60.jpg",
   "alt": "Sessão da Assembleia Nacional Constituinte que promulgou a Constituição de 1988.",
   "legenda": "Sessão da Assembleia Nacional Constituinte que promulgou a Constituição de 1988."
  },
- "1.74": {
+ "1.75": {
   "src": "img/cap-1_61.jpg",
   "alt": "Fernando Collor chega ao Palácio do Planalto com o vice Itamar Franco (posse de 1990).",
   "legenda": "Fernando Collor chega ao Palácio do Planalto com o vice Itamar Franco (posse de 1990)."
  },
- "1.75": {
+ "1.76": {
   "src": "img/cap-1_62.jpg",
   "alt": "Retrato oficial do presidente Fernando Henrique Cardoso (1999-2002).",
   "legenda": "Retrato oficial do presidente Fernando Henrique Cardoso (1999-2002)."
  },
- "1.76": {
+ "1.77": {
   "src": "img/cap-1_63.jpg",
   "alt": "Retrato oficial do presidente Luiz Inácio Lula da Silva (2003).",
   "legenda": "Retrato oficial do presidente Luiz Inácio Lula da Silva (2003)."
  },
- "1.77": {
+ "1.78": {
   "src": "img/cap-1_64.jpg",
   "alt": "Retrato oficial da presidenta Dilma Rousseff (2011).",
   "legenda": "Retrato oficial da presidenta Dilma Rousseff (2011)."
  },
- "1.78": {
+ "1.79": {
   "src": "img/cap-1_65.jpg",
   "alt": "Retrato oficial do presidente Michel Temer (2016-2018).",
   "legenda": "Retrato oficial do presidente Michel Temer (2016-2018)."
  },
- "1.79": {
+ "1.80": {
   "src": "img/cap-1_66.jpg",
   "alt": "O presidente Jair Bolsonaro em fotografia oficial do Palácio do Planalto (2019).",
   "legenda": "O presidente Jair Bolsonaro em fotografia oficial do Palácio do Planalto (2019)."
  },
- "1.80": {
+ "1.81": {
   "src": "img/cap-1_67.jpg",
   "alt": "Retrato oficial do presidente Luiz Inácio Lula da Silva para o mandato 2023-2027.",
   "legenda": "Retrato oficial do presidente Luiz Inácio Lula da Silva para o mandato 2023-2027."

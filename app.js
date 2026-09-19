@@ -100,7 +100,7 @@
     });
     bs.push({
       html: '<div class="sin-foto" data-cap="sinopse"><div class="sin-foto-quadro">' +
-        '<img id="fotoAutor" src="img/professor.jpg" alt="Foto ' + escapar(LIVRO.autor || "do autor") + '" loading="lazy">' +
+        '<img id="fotoAutor" src="img/professor.jpg" alt="Foto ' + escapar(LIVRO.autor || "do autor") + '">' +
         '<div class="sin-foto-vazio">' +
         '<span class="sf-icone">&#128395;</span>' +
         '<div><b>Espaço reservado</b></div>' +
@@ -422,8 +422,13 @@
     q._fotoFeito = 1;
     var img = q.querySelector("img");
     if (!img) return;
-    img.addEventListener("load", function () { q.classList.add("tem-foto"); });
-    img.addEventListener("error", function () { q.classList.add("sem-foto"); });
+    function pronto() {
+      if (img.naturalWidth > 0) { q.classList.add("tem-foto"); }
+      else { q.classList.add("sem-foto"); }
+    }
+    img.addEventListener("load", pronto);
+    img.addEventListener("error", pronto);
+    if (img.complete) pronto();
   }
 
   /* ------------------------- AVISO ------------------------- */

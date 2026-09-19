@@ -32,9 +32,14 @@
   var PAINEL  = document.getElementById("painel");
   var SUMARIO_DIV = document.getElementById("sumarioDiv");
   var CORTINA = document.getElementById("cortina");
+  var VIEWER = document.getElementById("viewer");
+  var VIEWER_IMG = document.getElementById("viewerImg");
+  var VIEWER_CAP = document.getElementById("viewerCap");
+  var VIEWER_FECHAR = document.getElementById("viewerFechar");
 
   var ORDEM = window.ORDEM || [];
   var LIVRO = window.LIVRO || {};
+  var IMAGENS = window.IMAGENS || {};
 
   /* ------------------------- ESTADO ------------------------- */
   var capitulos = [];        /* flat: {num, titulo, parte} */
@@ -140,6 +145,16 @@
         bs.push({ html: '<p>' + par + '</p>', cap: c.num });
       }
     });
+    var im = IMAGENS[c.num];
+    if (im && im.src) {
+      bs.push({
+        html: '<figure class="cap-img" data-cap="' + c.num + '">' +
+          '<img src="' + im.src + '" alt="' + escapar(im.alt || c.titulo) + '" loading="lazy">' +
+          (im.legenda ? '<figcaption>' + escapar(im.legenda) + '</figcaption>' : '') +
+          '</figure>',
+        cap: c.num
+      });
+    }
     if (c.vocabulario && c.vocabulario.length) {
       var lis = c.vocabulario.map(function (v) {
         return '<li><b>' + escapar(v[0]) + '</b> — ' + escapar(v[1]) + '</li>';
@@ -564,9 +579,9 @@
       if (e.key === "Escape") { TXT.value = ""; termo = ""; SUG.classList.remove("aberta"); render(); }
       return;
     }
-    if (e.key === "ArrowRight") { e.preventDefault(); avancar(); }
-    else if (e.key === "ArrowLeft") { e.preventDefault(); voltar(); }
-    else if (e.key === "Escape") { fecharPainel(); esconderTT(); }
+    if (e.key === "ArrowRight" && VIEWER.hidden) { e.preventDefault(); avancar(); }
+    else if (e.key === "ArrowLeft" && VIEWER.hidden) { e.preventDefault(); voltar(); }
+    else if (e.key === "Escape") { if (!VIEWER.hidden) fecharViewer(); else { fecharPainel(); esconderTT(); } }
   });
 
   TXT.addEventListener("input", atualizarSugestoes);
@@ -577,14 +592,19 @@
     if (e.target.id === "dicaOk") { e.stopPropagation(); fecharDica(); }
   });
 
-  /* clique/abbr + sumário __ dentro do palco */
+  /* clique/abbr + sumário + imagem __ dentro do palco */
   PALCO.addEventListener("click", function (e) {
+    var im = e.target.closest ? e.target.closest(".cap-img img") : null;
+    if (im) { abrirViewer(im); return; }
     var ab = e.target.closest ? e.target.closest("abbr") : null;
     if (ab) { mostrarTT(ab, e); return; }
     var it = e.target.closest ? e.target.closest(".sumario-item") : null;
     if (it && it.getAttribute("data-cap")) { goCap(it.getAttribute("data-cap")); esconderTT(); }
     else if (!ab) esconderTT();
   });
+
+  VIEWER_FECHAR.addEventListener("click", function (e) { e.stopPropagation(); fecharViewer(); });
+  VIEWER.addEventListener("click", function (e) { if (e.target !== VIEWER_IMG) fecharViewer(); });
 
   /* sumário lateral (painel) */
   SUMARIO_DIV.addEventListener("click", function (e) {
@@ -675,9 +695,29 @@
     window.speechSynthesis.onvoiceschanged = carregarVozes;
   }
 
+  /* ------------------------- VISUALIZADOR DE IMAGEM ------------------------- */
+  function abrirViewer(im) {
+    if (!im || !im.src) return;
+    VIEWER_IMG.src = im.src;
+    VIEWER_IMG.alt = im.alt || "";
+    var fig = im.closest ? im.closest(".cap-img") : null;
+    var cap = fig ? fig.querySelector("figcaption") : null;
+    VIEWER_CAP.textContent = cap ? cap.textContent.trim() : "";
+    VIEWER.hidden = false;
+    document.body.classList.add("sem-rolar");
+  }
+  function fecharViewer() {
+    if (VIEWER.hidden) return;
+    VIEWER.hidden = true;
+    VIEWER_IMG.src = "";
+    VIEWER_IMG.alt = "";
+    document.body.classList.remove("sem-rolar");
+  }
+
   /* swipe */
   var toque = null;
   document.addEventListener("touchstart", function (e) {
+    if (VIEWER && !VIEWER.hidden) return;
     if (e.touches.length === 1) {
       toque = { x: e.touches[0].clientX, y: e.touches[0].clientY, t: Date.now() };
     }

@@ -595,6 +595,76 @@ body.escuro #dica{ color: var(--c-tinta); background: var(--c-papel2); }
   cursor: pointer;
 }
 
+/* --------------------- IMAGENS DOS CAPÍTULOS --------------------- */
+.cap-img{
+  margin: 2px 0 16px;
+  text-align: center;
+}
+.cap-img img{
+  display: inline-block;
+  max-width: 100%;
+  max-height: 430px;
+  border-radius: 8px;
+  border: 6px solid var(--c-papel2);
+  box-shadow: 0 6px 18px var(--c-sombra);
+  background: var(--c-papel);
+  cursor: zoom-in;
+  transition: transform .2s;
+}
+.cap-img img:hover{ transform: scale(1.015); }
+.cap-img figcaption{
+  font-family: var(--fonte-ui);
+  font-size: 12px;
+  font-style: italic;
+  color: var(--c-tinta2);
+  margin-top: 6px;
+  line-height: 1.4;
+}
+
+/* --------------------- VISUALIZADOR DE IMAGEM --------------------- */
+#viewer{
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(0,0,0,.92);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 20px;
+}
+#viewer[hidden]{ display: none; }
+#viewer img{
+  max-width: 96vw;
+  max-height: 82vh;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0,0,0,.7);
+  background: #fff;
+}
+#viewer p{
+  margin: 0;
+  max-width: 85vw;
+  color: #f2ead6;
+  font-family: var(--fonte-ui);
+  font-size: 14px;
+  text-align: center;
+  line-height: 1.4;
+}
+#viewerFechar{
+  position: absolute;
+  top: 12px; right: 16px;
+  border: none;
+  background: transparent;
+  color: #fff;
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+#viewerFechar:hover{ color: #ffd27f; }
+body.sem-rolar{ overflow: hidden; }
+
 /* =============================================================
    RESPONSIVO
    ============================================================= */

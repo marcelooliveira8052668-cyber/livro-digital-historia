@@ -506,6 +506,48 @@ mark{
   color: var(--c-tinta2);
 }
 
+/* --------------------- REFERÊNCIAS E CRÉDITOS --------------------- */
+.ref-bloco{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+}
+.ref-rot{
+  font-size: 44px;
+}
+.ref-obs{
+  font-family: var(--fonte-ui);
+  font-size: .85em;
+  color: var(--c-tinta2);
+  font-style: italic;
+}
+.ref-p{
+  font-family: var(--fonte-ui);
+  font-size: .92em;
+  line-height: 1.5;
+  margin: 6px 0;
+  color: var(--c-tinta);
+}
+.cred-p{
+  font-family: var(--fonte-ui);
+  font-size: .9em;
+  line-height: 1.45;
+  margin: 6px 0;
+  color: var(--c-tinta);
+}
+.cred-p span{
+  color: var(--c-tinta2);
+}
+.cred-link{
+  font-family: var(--fonte-ui);
+  font-size: .85em;
+  color: var(--c-destaque);
+}
+
 /* --------------------- CONTROLES --------------------- */
 #controles{
   position: fixed;

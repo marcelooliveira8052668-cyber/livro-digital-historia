@@ -184,6 +184,35 @@
       '</div>';
   }
 
+  function referenciasBlocos() {
+    var R = window.REFERENCIAS || { fontes: [], creditos: [] };
+    var bs = [];
+    bs.push({
+      html: '<div class="ref-bloco" data-cap="ref">' +
+        '<div class="ref-rot">&#128214;</div>' +
+        '<h3 class="cap-tit sum-tit">Referências e Créditos</h3>' +
+        '<p class="ref-obs">' + escapar(R.aviso || "") + '</p>' +
+        '</div>',
+      novo: true, cap: "ref"
+    });
+    (R.fontes || []).forEach(function (f) {
+      bs.push({ html: '<p class="ref-p">' + escapar(f) + '</p>', cap: "ref" });
+    });
+    bs.push({ html: '<h5 class="cap-sub">Créditos das imagens (Wikimedia Commons)</h5>', cap: "ref" });
+    (R.creditos || []).forEach(function (c) {
+      bs.push({
+        html: '<p class="cred-p"><b>' + escapar(c.num + " — " + c.titulo) + '</b><br>' +
+          '<span>' + escapar(c.arquivo) +
+          (c.artista ? " — " + escapar(c.artista) : "") +
+          (c.licenca ? " — licença: " + escapar(c.licenca) : "") + '</span>' +
+          (c.url ? '<br><a class="cred-link" target="_blank" rel="noopener" href="' + escapar(c.url) + '">Ver arquivo original</a>' : "") +
+          '</p>',
+        cap: "ref"
+      });
+    });
+    return bs;
+  }
+
   /* ------------------------- AUSTE DO TAMANHO ------------------------- */
   function ajustar() {
     var largura = PALCO.clientWidth;
@@ -249,6 +278,7 @@
     bs = bs.concat(sinopseBlocos());
     bs = bs.concat(blocosSumario());
     capitulos.forEach(function (c) { bs = bs.concat(blocosCap(c)); });
+    bs = bs.concat(referenciasBlocos());
     bs.push({ html: htmlFim(), novo: true, cap: "fim" });
     return bs;
   }
